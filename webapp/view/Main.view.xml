@@ -109,10 +109,7 @@
                 <Label text="Danh sách PR" />
             </VBox>
         </content>
-        <f:DynamicPage
-            headerExpanded="true"
-            headerPinned='false'
-        >
+        <f:DynamicPage headerExpanded="{/headerExpanded}">
             <f:title>
                 <f:DynamicPageTitle>
                     <f:heading>
@@ -124,14 +121,14 @@
                     <f:expandedContent>
                         <Label
                             id="expandedLabel"
-                            text="No filters actiove"
+                            text="No filters active"
                         />
                     </f:expandedContent>
 
                     <f:snappedContent>
                         <Label
                             id="snappedLabel"
-                            text="No filters actiove"
+                            text="No filters active"
                         />
                     </f:snappedContent>
                 </f:DynamicPageTitle>
@@ -145,6 +142,7 @@
                             useToolbar="false"
                             search=".onSearch"
                             filterChange=".onFilterChange"
+                            afterVariantLoad=".onAfterVariantLoad"
                         >
                             <filterbar:filterGroupItems>
                                 <filterbar:FilterGroupItem
@@ -157,7 +155,7 @@
                                         <DatePicker
                                             id="startDate"
                                             placeholder="startDate"
-                                            change=".onChangeDate"
+                                            change=".onChangeSelect"
                                         />
                                     </filterbar:control>
                                 </filterbar:FilterGroupItem>
@@ -171,7 +169,7 @@
                                         <DatePicker
                                             id="endDate"
                                             placeholder="endDate"
-                                            change="onChangeDate"
+                                            change="onChangeSelect"
                                         />
                                     </filterbar:control>
                                 </filterbar:FilterGroupItem>
@@ -183,7 +181,7 @@
                                     visibleInFilterBar="true"
                                 >
                                     <filterbar:control>
-                                        <SearchField change=".onSearch" />
+                                        <SearchField change=".onChangeSelect" />
                                     </filterbar:control>
                                 </filterbar:FilterGroupItem>
 
@@ -196,7 +194,7 @@
                                     <filterbar:control>
                                         <MultiComboBox
                                             name="DeleteID"
-                                            selectionChange=".onSelectionChange"
+                                            selectionChange=".onChangeSelect"
                                             items="{/select}"
                                         >
                                             <core:Item
@@ -230,7 +228,7 @@
                                 <Text text="{DeleteID}" />
                             </table:template>
                         </table:Column>
-                         <table:Column width='11rem'>
+                        <table:Column width='11rem'>
                             <Label text="Số Lượng" />
                             <table:template>
                                 <Text text="{soLuong}" />

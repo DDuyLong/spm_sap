@@ -14,3 +14,9 @@ export interface Fiter {
   filters: Filter[];
   inputValues: Dict;
 }
+
+export interface dataFilter {
+  groupName: string,
+  fieldName: string,
+  fieldData: string | Date | UI5Date | string[]
+}
